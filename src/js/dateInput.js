@@ -1,5 +1,5 @@
-//import { populateRepoList } from "./populateRepoList.js";
-//import dataFetch from "./dataFetcher.js";
+import { populateTodayTabs } from "./todayTabBuilder.js";
+import getTodayInHistory from "./todayInHistoryFetcher.js";
 
 import dateInput from "./dateInputWithTodayButton";
 
@@ -16,12 +16,14 @@ export default () => {
 
     searchFormContainer.addEventListener("submit", e => {
         e.preventDefault();
-        let resultContainer = document.querySelector("#resultDiv");
-        let searchParameters = document.querySelector("#searchInput").value;
+        let resultContainer = document.querySelector("#tih-result");
+        let searchParameters = document.querySelector("#dateInput").value;
 
-        resultContainer.innerHTML = "";
-        dataFetch(searchParameters).then(repoList => {
-            resultContainer.appendChild(populateRepoList(repoList));
+        //resultContainer.innerHTML = "";
+
+        getTodayInHistory(searchParameters).then(todayInHistory => {
+            console.log(todayInHistory);
+            populateTodayTabs(todayInHistory);
         });
     });
 
