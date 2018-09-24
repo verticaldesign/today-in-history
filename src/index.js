@@ -1,1 +1,3 @@
-console.log("works");
+import todayInHistory from "./js/TIHComponent";
+
+todayInHistory();
