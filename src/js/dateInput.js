@@ -1,4 +1,4 @@
-import { populateTodayTabs } from "./todayTabBuilder.js";
+import { populateTodayTabs } from "./todayResults/todayResultsBuilder.js";
 import getTodayInHistory from "./todayInHistoryFetcher.js";
 
 import dateInput from "./dateInputWithTodayButton";

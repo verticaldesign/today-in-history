@@ -6,11 +6,10 @@ export default () => {
     let resultsContainer = document.createElement("div");
 
     TIHcontrolContainer.appendChild(dateInput());
+    resultsContainer.id = "tih-result";
 
     //TIHcontrolContainer.classList.add("tih-container");
-    //TIHcontrolContainer.appendChild(resultsContainer);
-
-    resultsContainer.id = "tih-result";
+    TIHcontrolContainer.appendChild(resultsContainer);
 
     document.querySelector("body").appendChild(TIHcontrolContainer);
 };
