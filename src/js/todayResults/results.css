@@ -7,6 +7,7 @@
     letter-spacing: 4px;
     font-size: 13px;
     border-radius: 0.25em;
+    cursor: pointer;
 }
 .tab-item.active {
     background-color: var(--main-color);
@@ -15,7 +16,7 @@
     padding: 1em;
     margin-bottom: 1em;
     border: 1px solid var(--main-color);
-    border-bottom: 2px solid #8bc7d4;
+    /* //border-bottom: 2px solid #8bc7d4; */
     box-shadow: 1px 0px 9px 1px #7dd3e678;
 }
 #tih-section-container section.hidden {
@@ -23,4 +24,12 @@
 }
 #tih-tab-container {
     text-align: center;
+}
+.tag {
+    margin-right: 1em;
+}
+.tag-container {
+    color: #888;
+    font-size: 12px;
+    margin-top: 0.5em;
 }

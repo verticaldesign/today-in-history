@@ -79,6 +79,19 @@ function rowBuilder(event) {
     headline.innerText = event.text;
     headline.classList.add("headline");
     newRow.appendChild(headline);
+
+    const tags = document.createElement("div");
+
+    tags.classList.add('tag-container');
+    tags.innerText = "Tags: ";
+    event.links.map(tag => {
+        const newTag = document.createElement("span");
+        newTag.innerText = tag.title;
+        newTag.classList.add("tag");
+        tags.appendChild(newTag);
+    });
+    newRow.appendChild(tags);
+
     return newRow;
 }
 function selectedSection(section) {
