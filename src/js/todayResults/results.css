@@ -1,10 +1,26 @@
 .tab-item {
     display: inline-block;
-    padding: 1em;
+    padding: 1em 2em;
     margin: 1em;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    letter-spacing: 4px;
+    font-size: 13px;
+    border-radius: 0.25em;
 }
-.result-row{
+.tab-item.active {
+    background-color: var(--main-color);
+}
+.result-row {
     padding: 1em;
     margin-bottom: 1em;
-    border: 1px solid aqua
+    border: 1px solid var(--main-color);
+    border-bottom: 2px solid #8bc7d4;
+    box-shadow: 1px 0px 9px 1px #7dd3e678;
+}
+#tih-section-container section.hidden {
+    display: none;
+}
+#tih-tab-container {
+    text-align: center;
 }

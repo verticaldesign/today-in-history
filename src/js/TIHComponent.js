@@ -5,6 +5,7 @@ export default () => {
     let TIHcontrolContainer = document.createElement("div");
     let resultsContainer = document.createElement("div");
 
+    TIHcontrolContainer.classList.add("tih-container");
     TIHcontrolContainer.appendChild(dateInput());
     resultsContainer.id = "tih-result";
 

@@ -1,0 +1,30 @@
+:root {
+    --main-color: #7dd3e6;
+}
+.tih-container {
+    background: #fff;
+    margin: 1em auto;
+    padding: 2em;
+    border: 1px solid #ccc;
+    max-width: 80vw;
+}
+body {
+    background-color: #eee;
+    font-family: sans-serif;
+}
+.tih-input-container button {
+    margin-right: 1em;
+}
+.tih-input-container > button {
+    font-size: 20px;
+    margin: 1em;
+    padding: 1em 2em;
+    background-color: var(--main-color);
+    border: 0;
+}
+input[type="date"] {
+    font-size: 10px;
+}
+.tih-input-container {
+    text-align: center;
+}

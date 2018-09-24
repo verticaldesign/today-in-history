@@ -7,13 +7,13 @@ export function populateTodayTabs(todayObject) {
     const deathSectoion = document.querySelector("#tih-death");
 
     todayObject.data.Events.map(histEvent => {
-        eventContainer.appendChild(rowBuilder(histEvent));
+        eventSection.appendChild(rowBuilder(histEvent));
     });
     todayObject.data.Births.map(histEvent => {
-        eventContainer.appendChild(rowBuilder(histEvent));
+        birthSectoion.appendChild(rowBuilder(histEvent));
     });
     todayObject.data.Deaths.map(histEvent => {
-        eventContainer.appendChild(rowBuilder(histEvent));
+        deathSectoion.appendChild(rowBuilder(histEvent));
     });
 }
 
@@ -29,6 +29,7 @@ function resetContainers() {
         const sectionContainer = document.createElement("div");
         sectionContainer.id = "tih-section-container";
 
+        sectionBuilder("all", tabContainer, sectionContainer);
         sectionBuilder("event", tabContainer, sectionContainer);
         sectionBuilder("birth", tabContainer, sectionContainer);
         sectionBuilder("death", tabContainer, sectionContainer);
@@ -43,8 +44,25 @@ function sectionBuilder(className, tabContainer, sectionContainer) {
     tabItem.classList.add("tab-item", className);
     tabItem.innerText = className;
     tabContainer.appendChild(tabItem);
+    className === "all" ? tabItem.classList.add("active") : "";
     tabItem.addEventListener("click", e => {
-        console.log(e.currentTarget.classList);
+        const el = e.currentTarget;
+        const tabs = document.querySelectorAll(".tab-item");
+        tabs.forEach(tab => tab.classList.remove("active"));
+        el.classList.add("active");
+
+        const listOfClasses = e.currentTarget.classList;
+        // const selectedSection = "";
+        listOfClasses.contains("event")
+            ? selectedSection(document.querySelector("#tih-event"))
+            : "";
+        listOfClasses.contains("birth")
+            ? selectedSection(document.querySelector("#tih-birth"))
+            : "";
+        listOfClasses.contains("death")
+            ? selectedSection(document.querySelector("#tih-death"))
+            : "";
+        listOfClasses.contains("all") ? selectedSection("all") : "";
     });
 
     const newSection = document.createElement("section");
@@ -62,4 +80,20 @@ function rowBuilder(event) {
     headline.classList.add("headline");
     newRow.appendChild(headline);
     return newRow;
+}
+function selectedSection(section) {
+    const eventSection = document.querySelector("#tih-event");
+    const birthSectoion = document.querySelector("#tih-birth");
+    const deathSectoion = document.querySelector("#tih-death");
+    if (section === "all") {
+        eventSection.classList.remove("hidden");
+        birthSectoion.classList.remove("hidden");
+        deathSectoion.classList.remove("hidden");
+    } else {
+        eventSection.classList.add("hidden");
+        birthSectoion.classList.add("hidden");
+        deathSectoion.classList.add("hidden");
+
+        section.classList.remove("hidden");
+    }
 }

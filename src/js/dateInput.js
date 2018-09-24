@@ -8,7 +8,7 @@ export default () => {
     const searchButton = document.createElement("button");
     const dateSelector = dateInput();
 
-    searchButton.innerHTML = "Learn Me Good";
+    searchButton.innerHTML = "What happened?";
     searchFormContainer.classList.add("tih-input-container");
 
     searchFormContainer.appendChild(dateSelector);
