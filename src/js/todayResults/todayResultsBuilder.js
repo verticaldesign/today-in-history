@@ -3,18 +3,29 @@ export function populateTodayTabs(todayObject) {
     resetContainers();
 
     const eventSection = document.querySelector("#tih-event");
-    const birthSectoion = document.querySelector("#tih-birth");
-    const deathSectoion = document.querySelector("#tih-death");
+    const birthSection = document.querySelector("#tih-birth");
+    const deathSection = document.querySelector("#tih-death");
+    const allSection = document.querySelector("#tih-all");
+
+    let allEvents = Object.values(todayObject.data).flat();
+    console.log(allEvents[0]);
+    allEvents.sort((a, b) => {
+        return a.year - b.year;
+    });
 
     todayObject.data.Events.map(histEvent => {
         eventSection.appendChild(rowBuilder(histEvent));
     });
     todayObject.data.Births.map(histEvent => {
-        birthSectoion.appendChild(rowBuilder(histEvent));
+        birthSection.appendChild(rowBuilder(histEvent));
     });
     todayObject.data.Deaths.map(histEvent => {
-        deathSectoion.appendChild(rowBuilder(histEvent));
+        deathSection.appendChild(rowBuilder(histEvent));
     });
+    allEvents.map(histEvent => {
+        allSection.appendChild(rowBuilder(histEvent));
+    });
+    selectedSection(document.querySelector("#tih-all"));
 }
 
 function resetContainers() {
@@ -22,6 +33,7 @@ function resetContainers() {
         document.querySelector("#tih-event").innerHTML = "";
         document.querySelector("#tih-birth").innerHTML = "";
         document.querySelector("#tih-death").innerHTML = "";
+        document.querySelector("#tih-all").innerHTML = "";
     } else {
         const tabContainer = document.createElement("div");
         tabContainer.id = "tih-tab-container";
@@ -62,7 +74,9 @@ function sectionBuilder(className, tabContainer, sectionContainer) {
         listOfClasses.contains("death")
             ? selectedSection(document.querySelector("#tih-death"))
             : "";
-        listOfClasses.contains("all") ? selectedSection("all") : "";
+        listOfClasses.contains("all")
+            ? selectedSection(document.querySelector("#tih-all"))
+            : "";
     });
 
     const newSection = document.createElement("section");
@@ -80,9 +94,13 @@ function rowBuilder(event) {
     headline.classList.add("headline");
     newRow.appendChild(headline);
 
-    const tags = document.createElement("div");
+    const yearTag = document.createElement("div");
+    yearTag.innerText = event.year;
+    yearTag.classList.add("year-tag");
+    newRow.appendChild(yearTag);
 
-    tags.classList.add('tag-container');
+    const tags = document.createElement("div");
+    tags.classList.add("tag-container");
     tags.innerText = "Tags: ";
     event.links.map(tag => {
         const newTag = document.createElement("span");
@@ -96,17 +114,20 @@ function rowBuilder(event) {
 }
 function selectedSection(section) {
     const eventSection = document.querySelector("#tih-event");
-    const birthSectoion = document.querySelector("#tih-birth");
-    const deathSectoion = document.querySelector("#tih-death");
-    if (section === "all") {
-        eventSection.classList.remove("hidden");
-        birthSectoion.classList.remove("hidden");
-        deathSectoion.classList.remove("hidden");
-    } else {
-        eventSection.classList.add("hidden");
-        birthSectoion.classList.add("hidden");
-        deathSectoion.classList.add("hidden");
+    const deathSection = document.querySelector("#tih-death");
+    const birthSection = document.querySelector("#tih-birth");
+    const allSection = document.querySelector("#tih-all");
 
-        section.classList.remove("hidden");
-    }
+    // if (section === "all") {
+    //     eventSection.classList.remove("hidden");
+    //     birthSection.classList.remove("hidden");
+    //     deathSection.classList.remove("hidden");
+    // } else {
+    eventSection.classList.add("hidden");
+    birthSection.classList.add("hidden");
+    deathSection.classList.add("hidden");
+    allSection.classList.add("hidden");
+
+    section.classList.remove("hidden");
+    //}
 }

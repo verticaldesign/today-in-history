@@ -16,11 +16,13 @@
     padding: 1em;
     margin-bottom: 1em;
     border: 1px solid var(--main-color);
+    background-color: #fff;
     /* //border-bottom: 2px solid #8bc7d4; */
     box-shadow: 1px 0px 9px 1px #7dd3e678;
 }
 #tih-section-container section.hidden {
-    display: none;
+    /* display: none; */
+    transform: translateX(100%);
 }
 #tih-tab-container {
     text-align: center;
@@ -32,4 +34,23 @@
     color: #888;
     font-size: 12px;
     margin-top: 0.5em;
+}
+#tih-birth,
+#tih-death,
+#tih-event,
+#tih-all {
+    position: absolute;
+    transition: 1s;
+    width: 60em;
+    top: 0;
+    left: 0;
+}
+
+#tih-section-container {
+    position: relative;
+    height: 100vh;
+    overflow: auto;
+}
+#tih-section-container:nth-child(1) {
+    transition-delay: 0.5s;
 }
