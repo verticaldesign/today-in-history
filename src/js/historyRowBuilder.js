@@ -23,8 +23,6 @@ export default class RowBuilder extends React.Component {
     }
 }
 
-//                <div className="tag-container">{this.props.value.links[0]}</div>
-
 class Tag extends React.Component {
     render() {
         return <span className="tag">{this.props.value.title}</span>;
