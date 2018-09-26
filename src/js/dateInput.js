@@ -1,32 +1,46 @@
-import { populateTodayTabs } from "./todayResults/todayResultsBuilder.js";
+// import { populateTodayTabs } from "./todayResults/todayResultsBuilder.js";
 import getTodayInHistory from "./todayInHistoryFetcher.js";
+import React from "react";
 
 import dateInput from "./dateInputWithTodayButton";
 
-export default () => {
-    const searchFormContainer = document.createElement("form");
-    const searchButton = document.createElement("button");
-    const dateSelector = dateInput();
+export default class DateSubmit extends React.Component {
+    render() {
+        return (
+            <div className="tih-input-container">
+                <button onClick={this.props.onClick}>What is up Today</button>
+            </div>
+        );
+    }
+}
 
-    searchButton.innerHTML = "What happened?";
-    searchFormContainer.classList.add("tih-input-container");
+// const populateVals = events => {
+//     events = getTodayInHistory().then(data => console.log(data));
+// };
 
-    searchFormContainer.appendChild(dateSelector);
-    searchFormContainer.appendChild(searchButton);
+//     const searchFormContainer = document.createElement("form");
+//     const searchButton = document.createElement("button");
+//     const dateSelector = dateInput();
 
-    searchFormContainer.addEventListener("submit", e => {
-        e.preventDefault();
-        let resultContainer = document.querySelector("#tih-result");
-        let searchParameters = document.querySelector("#dateInput").value;
+//     searchButton.innerHTML = "What happened?";
+//     searchFormContainer.classList.add("tih-input-container");
 
-        //resultContainer.innerHTML = "";
+//     searchFormContainer.appendChild(dateSelector);
+//     searchFormContainer.appendChild(searchButton);
 
-        getTodayInHistory(searchParameters).then(todayInHistory => {
-            console.log(todayInHistory);
-            populateTodayTabs(todayInHistory);
-        });
-    });
+//     searchFormContainer.addEventListener("submit", e => {
+//         e.preventDefault();
+//         let resultContainer = document.querySelector("#tih-result");
+//         let searchParameters = document.querySelector("#dateInput").value;
 
-    //console.log(searchContainer);
-    return searchFormContainer;
-};
+//         //resultContainer.innerHTML = "";
+
+//         getTodayInHistory(searchParameters).then(todayInHistory => {
+//             console.log(todayInHistory);
+//             populateTodayTabs(todayInHistory);
+//         });
+//     });
+
+//     //console.log(searchContainer);
+//     return searchFormContainer;
+// };
